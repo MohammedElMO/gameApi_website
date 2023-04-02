@@ -5,7 +5,7 @@ import "./index.css"
 const App = () => {
   return (
     <>
-      <div className="h-full grid grid-areas-layout  grid-rows-layout ">
+      <div className="h-full grid grid-areas-layout  grid-rows-layout  ">
         <section className=" grid-in-nav ">
           <NavBar/>
           </section>

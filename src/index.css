@@ -2,4 +2,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@layer base {
+    .gameList{
+        @apply p-2 hover:bg-[#d7d7d71c] rounded   cursor-pointer
+    }
+}
