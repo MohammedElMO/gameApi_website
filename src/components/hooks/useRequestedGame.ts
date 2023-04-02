@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
 import apiBase from "../services/api-client"
 import { CanceledError,AxiosError } from "axios"
-interface GameResponse {
+export interface GameResponse {
     id: number
     name: string
     released: string
     rating: number
     playtime: Date
-    updated:string
+    updated: string
+    background_image:string
 }
 interface GameResponseApi{
     count: number;

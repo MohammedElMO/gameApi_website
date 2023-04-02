@@ -14,10 +14,10 @@ const App = () => {
         <section className=" grid-in-nav ">
           <NavBar darkmode={dark} setDarkmode={setDarkmode} />
           </section>
-        <section className=" bg-cyan-500 grid-in-main x-sm:max-md:col-start-nav ">
+        <section className=" bg-cyan-500 grid-in-main max-md:col-start-nav ">
         <GamesGrid/>
           </section>
-            <section className=" bg-green-500 grid-in-aside x-sm:max-md:hidden">Aside</section>
+            <section className="bg-green-500 grid-in-aside x-sm:max-md:hidden">Aside</section>
       </div>
     </>
   );
