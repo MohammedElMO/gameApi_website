@@ -5,7 +5,31 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    screens: {
+      'x-sm':'200px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
+    extend: {
+      gridTemplateAreas: {
+        'layout': [
+          "nav nav",
+          'aside main',
+        ],
+      },
+      gridTemplateColumns: {
+        'layout': `auto`,
+      },
+      gridTemplateRows: {
+        'layout': `1fr 2fr `,
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+    require('@savvywombat/tailwindcss-grid-areas')
+  ]
+
 }
