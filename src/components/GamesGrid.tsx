@@ -1,38 +1,14 @@
 import { Grid } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import apiBase from "../components/services/api-client"
+import useRequestedGames from "../components/hooks/useRequestedGame"
 
-interface GameResponse {
-    id: number
-    name: string
-    released: string
-    rating: number
-    playtime: Date
-    updated:string
-}
-interface GameResponseApi{
-    count: number;
-    results:GameResponse[]
-}
 
 const GamesGrid = () => {
-    const [games, setGames] = useState<GameResponse[]>([])
-    const [errors, setErrors] = useState("")
-    useEffect(() => {
-        const controller = new AbortController()
-        apiBase
-            .get<GameResponseApi>("/games", { signal: controller.signal })
-            .then(rep => {
-                setGames(rep.data.results)
-            })
-            .catch(err => {
-                setErrors(err.message   )
-        })
-                
+    const  { games , errors} = useRequestedGames()
 
 
-        return ()=> controller.abort()
-    },[])
+     
 
     return (
         <>
