@@ -1,5 +1,5 @@
 
-export const darkMode = (classes:string,isActivited:boolean) => {
-    return  isActivited ? "dark:" + classes : classes
+export const darkMode = (classes:string,isActivited:boolean,darkClass:string) => {
+    return  isActivited ? `dark: ${darkClass} ${classes} ` : classes
 }
 
