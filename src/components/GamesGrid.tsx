@@ -14,11 +14,14 @@ const GamesGrid = () => {
     return (
         <>
             <div className="
-            lg:grid-cols-5
+            lg:grid-cols-3
             max-semi-md:grig-cols-1
             max-sm:grid-cols-1
             max-md:grid-cols-2
-            grid gap-2 grid-cols-3 p-5 grid-rows-2">
+            grid  grid-cols-3
+            p-5
+            grid-rows-2
+            gap-4">
                 <GameCard game={games} />
                
             </div>

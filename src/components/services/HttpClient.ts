@@ -1,21 +1,16 @@
 import apiBase from "./api-client"
 
-
-
+const url ="https://api.rawg.io/api/games/{game_pk}"
+import apiClient from "./api-client"
+import axios from "axios"
 class HttpClient {
+
 constructor(public endPoint :string){}
-    getAll() {
-        
+    getAll<T>() {
+       const screenShotsRequest = axios.get<T[]>(url+this.endPoint)
+        return {screenShotsRequest }
     }
-    Delete() {
-        
-    }
-    create() {
-        
-    }
-    Remove() {
-        
-    }
+  
 
 }
 

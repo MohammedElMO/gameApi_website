@@ -15,6 +15,7 @@ export interface GameResponse {
     playtime: Date
     updated: string
     background_image: string
+    metacritic:number
     parent_platforms: { platform : PlatForm }[]
 }
 interface GameResponseApi{

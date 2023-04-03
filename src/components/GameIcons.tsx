@@ -11,14 +11,14 @@ type Props = {
 const GameIcons = ({ platforms }: Props) => {
 
       const tabIconGame =  [
-             { name:"pc",icon:< FaWindows className="scale-110 text-gray-100" />},
-             { name:"playstation",icon:< BsPlaystation  className="scale-110 text-gray-100"/>},
-             {name:"xbox",icon:<BsXbox className="scale-110 text-gray-100"/>},
-             { name:"nintendo", icon:<BsNintendoSwitch className="scale-110 text-gray-100" /> },
-             { name:"linux",icon:<SiLinux className="scale-110 text-gray-100"/> },
-             { name:"mac", icon:<BsApple className="scale-110 text-gray-100"/> },
-             { name:"android", icon:<BsAndroid2 className="scale-110 text-gray-100"/> },
-             { name:"ios", icon:<IoPhonePortrait className="scale-110 text-gray-100"/> },
+             { name:"pc",icon:< FaWindows className="scale-125 text-gray-100" />},
+             { name:"playstation",icon:< BsPlaystation  className="scale-125 text-gray-100"/>},
+             {name:"xbox",icon:<BsXbox className="scale-125 text-gray-100"/>},
+             { name:"nintendo", icon:<BsNintendoSwitch className="scale-125 text-gray-100" /> },
+             { name:"linux",icon:<SiLinux className="scale-125 text-gray-100"/> },
+             { name:"mac", icon:<BsApple className="scale-125 text-gray-100"/> },
+             { name:"android", icon:<BsAndroid2 className="scale-125 text-gray-100"/> },
+             { name:"ios", icon:<IoPhonePortrait className="scale-125 text-gray-100"/> },
         ]
            
 
@@ -26,8 +26,8 @@ const GameIcons = ({ platforms }: Props) => {
         <div className="flex gap-3 px-2 py-3 flex-wrap">
             {platforms.map(platform => 
                 <>
-                    {tabIconGame.map(({ icon, name }) => {
-                return platform.slug === name ? <span >{ icon}</span> : ""
+            {tabIconGame.map(({ icon, name }) => {
+                return platform.slug === name ? <span key={name}>{ icon}</span> : ""
             })}
                 </>
             )}
