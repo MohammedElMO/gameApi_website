@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react"
 import apiBase from "../services/api-client"
-import { CanceledError,AxiosError } from "axios"
+import { CanceledError, AxiosError } from "axios"
+
+export interface PlatForm   {
+    id: number
+    name: string
+    slug:string
+}
 export interface GameResponse {
     id: number
     name: string
@@ -8,7 +14,8 @@ export interface GameResponse {
     rating: number
     playtime: Date
     updated: string
-    background_image:string
+    background_image: string
+    parent_platforms: { platform : PlatForm }[]
 }
 interface GameResponseApi{
     count: number;
