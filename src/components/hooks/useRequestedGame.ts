@@ -26,22 +26,26 @@ interface GameResponseApi{
 const useRequestedGames = () => {
     const [games, setGames] = useState<GameResponse[]>([])
     const [errors, setErrors] = useState("")
+    const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
         const controller = new AbortController()
         apiBase
             .get<GameResponseApi>("/games", { signal: controller.signal })
             .then(rep => {
                 setGames(rep.data.results)
+                setIsLoading(false)
             })
             .catch((err:AxiosError) => {
                 if(err instanceof CanceledError)return
                 setErrors(err.message)
+                setIsLoading(false)
             })
             return () => controller.abort()
         }, [])
     return {
         games,
         errors,
+        isLoading
        }         
 }
 export default useRequestedGames
