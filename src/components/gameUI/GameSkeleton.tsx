@@ -1,6 +1,6 @@
 import Avatar from "@mui/material/Avatar";
 import Skeleton from "@mui/material/Skeleton";
-import { PlatForm } from "./hooks/useRequestedGame";
+import { PlatForm } from "../hooks/useRequestedGame";
 interface Props {
     boxs:PlatForm[]
 }
@@ -8,7 +8,6 @@ interface Props {
 export const GameSkeleton = ({boxs}:Props) => {
     return (
         <>
-            <article className="flex flex-col shadow-lg  items-start overflow-hidden hover:-translate-y-1.5 transition-all  max-w-md font-pop cursor-pointer  ">
                 <figure >
                     <Skeleton variant="rectangular"
                         animation="wave"
@@ -32,7 +31,6 @@ export const GameSkeleton = ({boxs}:Props) => {
                         <Skeleton variant="text"   sx={{ fontSize: '1.5rem',width:"80%",backgroundColor: "grey.800"}} animation="wave" />
                     </div>
                 </div>
-            </article>
         </>
     )
 };

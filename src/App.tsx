@@ -18,7 +18,7 @@ const App = () => {
         <section className=" bg-[#999] grid-in-main max-md:col-start-nav ">
         <GamesGrid/>
           </section>
-        <section className="bg-[#575656] grid-in-aside x-sm:max-md:hidden">
+        <section className="bg-[#343333] grid-in-aside p-3 x-sm:max-md:hidden">
         <GenresDropList />  
         </section>
       </div>

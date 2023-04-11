@@ -26,7 +26,7 @@ export default {
         ],
       },
       gridTemplateColumns: {
-        'layout': `auto`,
+        'layout': `1fr`,
       },
       gridTemplateRows: {
         'layout': `1fr 2fr `,

@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react"
-import apiBase from "../services/api-client"
-import { CanceledError, AxiosError } from "axios"
+
+import useRequestedData from "./useData"
 
 export interface PlatForm   {
     id: number
@@ -18,36 +17,4 @@ export interface GameResponse {
     metacritic:number
     parent_platforms: { platform : PlatForm }[]
 }
-interface GameResponseApi{
-    results:GameResponse[]
-}
-
-const useRequestedGames = () => {
-    const [games, setGames] = useState<GameResponse[]>([])
-    const [errors, setErrors] = useState("")
-    const [isLoading, setIsLoading] = useState(false)
-    useEffect(() => {
-        const controller = new AbortController()
-        setIsLoading(true)
-        apiBase
-            .get<GameResponseApi>("/games", { signal: controller.signal })
-            .then(rep => {
-                setGames(rep.data.results)
-                // setIsLoading(false)
-            })
-            .catch((err:AxiosError) => {
-                if(err instanceof CanceledError)return
-                setErrors(err.message)
-                
-            }).finally(() =>
-                setIsLoading(false)
-                )
-            return () => controller.abort()
-        }, [])
-    return {
-        games,
-        errors,
-        isLoading
-       }         
-}
-export default useRequestedGames
+export const useRequestedGames = () => useRequestedData<GameResponse>("/games") 

@@ -1,15 +1,12 @@
-import { Grid } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import apiBase from "../services/api-client"
-import useRequestedGames from "../hooks/useRequestedGame"
 import GameCard from "./GameCard";
+import { useRequestedGames } from "../hooks/useRequestedGame";
 
 
 const GamesGrid = () => {
-    const  { games , errors} = useRequestedGames()
+    const { data, errors, isLoading } = useRequestedGames()
 
 
-     
+
 
     return (
         <>
@@ -18,14 +15,15 @@ const GamesGrid = () => {
             max-semi-md:grig-cols-1
             max-sm:grid-cols-1
             max-md:grid-cols-2
-            grid  grid-cols-3
+            grid-cols-3
+            grid 
             p-5
             grid-rows-2
             gap-4">
-                <GameCard game={games} />
-               
+                <GameCard game={data} isLoading={isLoading} />
+
             </div>
-            
+
         </>
     );
 };
