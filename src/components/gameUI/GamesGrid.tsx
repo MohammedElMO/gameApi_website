@@ -1,7 +1,7 @@
 import { Grid } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import apiBase from "../components/services/api-client"
-import useRequestedGames from "../components/hooks/useRequestedGame"
+import apiBase from "../services/api-client"
+import useRequestedGames from "../hooks/useRequestedGame"
 import GameCard from "./GameCard";
 
 

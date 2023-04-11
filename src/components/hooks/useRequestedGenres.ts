@@ -2,38 +2,26 @@ import { useEffect, useState } from "react"
 import apiBase from "../services/api-client"
 import { CanceledError, AxiosError } from "axios"
 
-export interface PlatForm   {
-    id: number
-    name: string
-    slug:string
+export interface Genre {
+    id: number,
+    name: string,
 }
-export interface GameResponse {
-    id: number
-    name: string
-    released: string
-    rating: number
-    playtime: Date
-    updated: string
-    background_image: string
-    metacritic:number
-    parent_platforms: { platform : PlatForm }[]
-}
-interface GameResponseApi{
-    results:GameResponse[]
+interface GenresApi {
+    count:number
+    results:Genre[]
 }
 
-const useRequestedGames = () => {
-    const [games, setGames] = useState<GameResponse[]>([])
+const useRequestedGenres = () => {
+    const [genres, setGenres] = useState<Genre[]>([])
     const [errors, setErrors] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     useEffect(() => {
         const controller = new AbortController()
         setIsLoading(true)
         apiBase
-            .get<GameResponseApi>("/games", { signal: controller.signal })
+            .get<GenresApi>("/genres", { signal: controller.signal })
             .then(rep => {
-                setGames(rep.data.results)
-                // setIsLoading(false)
+                setGenres(rep.data.results)
             })
             .catch((err:AxiosError) => {
                 if(err instanceof CanceledError)return
@@ -45,9 +33,10 @@ const useRequestedGames = () => {
             return () => controller.abort()
         }, [])
     return {
-        games,
+        genres,
         errors,
         isLoading
        }         
 }
-export default useRequestedGames
+export default useRequestedGenres
+

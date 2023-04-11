@@ -7,7 +7,7 @@ class HttpClient {
 
 constructor(public endPoint :string){}
     getAll<T>() {
-       const screenShotsRequest = axios.get<T[]>(url+this.endPoint)
+       const screenShotsRequest = apiClient.get<T[]>(this.endPoint)
         return {screenShotsRequest }
     }
   
