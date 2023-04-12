@@ -3,19 +3,21 @@ import GameIcons from "./GameIcons";
 import GameBadge from "./GameBadge";
 import CropImage from "../services/image-url";
 import { GameSkeleton } from "./GameSkeleton";
+import { Genre } from "../hooks/useRequestedGenres";
 interface GameT {
     game: GameResponse[]
-    isLoading:boolean
+    isLoading: boolean
 }
 
 
-const GameCard = ({ game,isLoading }: GameT) => {
+const GameCard = ({ game, isLoading }: GameT) => {
+    
     return (
         <>
             
-            {game.map((gamer) =>
+            {game.map((gamer) => 
                 <article key={gamer.id} className="flex flex-col shadow-lg  items-start overflow-hidden bg-[#232223] hover:-translate-y-1.5 transition-all rounded-2xl font-pop cursor-pointer  ">
-                    {isLoading && <GameSkeleton boxs={gamer.parent_platforms.map(plat => plat.platform)} />}
+                    {isLoading ?? <GameSkeleton boxs={gamer.parent_platforms.map(plat => plat.platform)} /> }       
                     <figure >
                         <img className=" object-contain" src={CropImage(gamer.background_image)} alt="cyber gamer picture" />
                     </figure>
@@ -30,6 +32,7 @@ const GameCard = ({ game,isLoading }: GameT) => {
                         </div>
                     </div>
                 </article>
+                    
             )}
         </>
     );

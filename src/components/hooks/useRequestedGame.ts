@@ -1,4 +1,4 @@
-
+import { Genre } from './useRequestedGenres';
 import useRequestedData from "./useData"
 
 export interface PlatForm   {
@@ -6,6 +6,7 @@ export interface PlatForm   {
     name: string
     slug:string
 }
+
 export interface GameResponse {
     id: number
     name: string
@@ -17,4 +18,8 @@ export interface GameResponse {
     metacritic:number
     parent_platforms: { platform : PlatForm }[]
 }
-export const useRequestedGames = () => useRequestedData<GameResponse>("/games") 
+export const useRequestedGames = (SelectedGenre: Genre | null) => useRequestedData<GameResponse>("/games", {
+    params: {
+        genres: SelectedGenre?.id
+    }
+}) 

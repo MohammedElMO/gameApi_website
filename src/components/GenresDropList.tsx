@@ -1,9 +1,15 @@
-import {useRequestedGenres} from "./hooks/useRequestedGenres";
+import {Genre, useRequestedGenres} from "./hooks/useRequestedGenres";
 import CropImage from "./services/image-url";
+import CircularProgress from '@mui/joy/CircularProgress';
 
+interface Props {
+    onFilter:(genreName:Genre) => void
+}
 
-const GenresDropList = () => {
-    const  { data,errors }= useRequestedGenres()
+const GenresDropList = ({onFilter}:Props) => {
+    const { data, errors ,isLoading} = useRequestedGenres()
+    if(errors) return null
+    if(isLoading) return <CircularProgress />
     return (
 
         <ul className="font-pop">
@@ -13,7 +19,9 @@ const GenresDropList = () => {
                     <img className=" origin-center object-contains max-w-sm w-10 rounded-md group-hover:scale-125"
                         src={CropImage(genre.image_background)}
                         alt="game genre icon" />
+                    <a className=" hover:underline" onClick={() => onFilter(genre)}>
                     {genre.name}
+                    </a>
                 </li>
                 )}
         </ul>

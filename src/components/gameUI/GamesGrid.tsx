@@ -1,9 +1,12 @@
 import GameCard from "./GameCard";
 import { useRequestedGames } from "../hooks/useRequestedGame";
+import { Genre } from "../hooks/useRequestedGenres";
+interface Props  {
+    SelectedGenre:Genre | null
+}
 
-
-const GamesGrid = () => {
-    const { data, errors, isLoading } = useRequestedGames()
+const GamesGrid = ({SelectedGenre}:Props) => {
+    const { data, isLoading } = useRequestedGames(SelectedGenre)
 
 
 
