@@ -6,6 +6,10 @@
     .gameList{
         @apply p-2 hover:bg-[#d7d7d71c] rounded   cursor-pointer
     }
+    .filterListItem {
+        @apply rounded-md p-2 w-full m-2 cursor-pointer hover:bg-slate-500
+        
+    }
    
         
 }

@@ -6,7 +6,7 @@ interface DataApi<T> {
     count:number
     results:T[]
 }
-const useRequestedData = <T>(endPoint: string, axiosConfig?:AxiosRequestConfig) => {
+const useRequestedData = <T>(endPoint: string, axiosConfig?:AxiosRequestConfig,Devdep?:any[]) => {
     const [data, setData] = useState<T[]>([])
     const [errors, setErrors] = useState("")
     const [isLoading, setIsLoading] = useState(true)
@@ -17,14 +17,16 @@ const useRequestedData = <T>(endPoint: string, axiosConfig?:AxiosRequestConfig) 
             .get<DataApi<T>>(endPoint, { signal: controller.signal,...axiosConfig})
             .then(rep => {
                 setData(rep.data.results)
+                setIsLoading(false)
             })
             .catch((err:AxiosError) => {
                 if(err instanceof CanceledError)return
                 setErrors(err.message)
+                setIsLoading(false)
                 
             }).finally(() => setIsLoading(false))
             return () => controller.abort()
-        }, axiosConfig ? [axiosConfig] : [])
+        }, Devdep ? [Devdep] : [])
     return {
         data,
         errors,

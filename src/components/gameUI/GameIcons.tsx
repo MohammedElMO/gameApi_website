@@ -27,7 +27,7 @@ const GameIcons = ({ platforms }: Props) => {
             {platforms.map(platform => 
                 <>
             {tabIconGame.map(({ icon, name ,id}) => {
-                return platform.slug === name ? <span key={id}>{ icon}</span> : ""
+                return platform.slug === name ? <span key={id}>{ icon}</span> : null
             })}
                 </>
             )}
