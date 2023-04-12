@@ -22,7 +22,7 @@ const App = () => {
           <GamesGrid SelectedGenre={ SelectedGenre} />
           </section>
         <section className="bg-[#343333] grid-in-aside p-3 max-w-[200px] w-[200px] max-md:hidden"> 
-          <GenresDropList onFilter={(genre) => setSelectedGenre(genre)} />  
+          <GenresDropList onFilter={(genre) => setSelectedGenre(genre)} selectedGenres={SelectedGenre} />  
         </section>
       </div>
     </>
