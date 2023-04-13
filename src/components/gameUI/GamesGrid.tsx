@@ -2,13 +2,13 @@ import GameCard from "./GameCard";
 import { useRequestedGames } from "../hooks/useRequestedGame";
 import { Genre } from "../hooks/useRequestedGenres";
 import { Platform } from "../hooks/useRequestedPlatforms";
+import { GameQuery } from "../../App";
 interface Props  {
-    SelectedGenre:Genre | null
-    SelectedPlatForm:Platform | null
+    gameQuery: GameQuery
 }
 
-const GamesGrid = ({SelectedGenre,SelectedPlatForm}:Props) => {
-    const { data, isLoading } = useRequestedGames(SelectedGenre,SelectedPlatForm)
+const GamesGrid = ({gameQuery}:Props) => {
+    const { data, isLoading } = useRequestedGames(gameQuery)
 
 
 

@@ -1,3 +1,4 @@
+import { GameQuery } from './../../App';
 import { Genre } from './useRequestedGenres';
 import { Platform} from './useRequestedPlatforms';
 import useRequestedData from "./useData"
@@ -19,10 +20,10 @@ export interface GameResponse {
     metacritic:number
     parent_platforms: { platform : PlatForm }[]
 }
-export const useRequestedGames = (SelectedGenre: Genre | null, SelectedPlatForm: Platform | null) => useRequestedData<GameResponse>("/games", {
+export const useRequestedGames = (GameQuery:GameQuery) => useRequestedData<GameResponse>("/games", {
  params: {
-        genres: SelectedGenre?.id,
-        platforms:SelectedPlatForm?.id
+        genres: GameQuery.genre?.id,
+        platforms:GameQuery.platform?.id
     }    
 },
-[SelectedGenre?.id,SelectedPlatForm?.id]) 
+[GameQuery]) 

@@ -20,7 +20,7 @@ const GenresDropList = ({onFilter,selectedGenres}:Props) => {
                     <img className=" origin-center object-contains max-w-sm w-10 rounded-md group-hover:scale-125"
                         src={CropImage(genre.image_background)}
                         alt="game genre icon" />
-                    <a className={selectedGenres?.id === genre.id ? " hover:underline underline font-bold" :"hover:underline"} onClick={() => onFilter(genre)}>
+                    <a className={selectedGenres?.id === genre.id ? "hover:underline underline font-bold" :"hover:underline"} onClick={() => onFilter(genre)}>
                     {genre.name}
                     </a>
                 </li>
