@@ -12,12 +12,13 @@ const GenresDropList = ({onFilter,selectedGenres}:Props) => {
     if(errors) return null
     if(isLoading) return <CircularProgress />
     return (
-
+        <>
+    <h1 className="text-3xl font-bold font-pop text-white text-start">Genres</h1>
         <ul className="font-pop">
             {data.map(genre =>
                 <li className="flex gap-2 my-4  text-[#ffffffd5] items-center cursor-pointer group "
                 key={genre.id} >
-                    <img className=" origin-center object-contains max-w-sm w-10 rounded group-hover:scale-125"
+                    <img className=" origin-center object-cover max-w-sm w-10 rounded group-hover:scale-125"
                         src={CropImage(genre.image_background)}
                         alt="game genre icon" />
                     <a className={selectedGenres?.id === genre.id ? "hover:underline underline font-bold" :"hover:underline"} onClick={() => onFilter(genre)}>
@@ -26,6 +27,7 @@ const GenresDropList = ({onFilter,selectedGenres}:Props) => {
                 </li>
                 )}
         </ul>
+</>
     );
 };
 export default GenresDropList

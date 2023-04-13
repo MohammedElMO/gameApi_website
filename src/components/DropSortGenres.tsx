@@ -20,7 +20,7 @@ const DropSort = ({OnSortGames}:Props) => {
   return (
       <>
         <div tabIndex={1} onBlur={() =>setisDrop(false)} onClick={() => setisDrop(!isDrop)}
-          className="flex justify-start p-4 ml-6 mt-7 hover:bg-slate-500 cursor-pointer w-fit  self-center font-pop rounded-md relative bg-gray-500 text-white">
+          className="flex focus:outline-none justify-start p-4 ml-6 mt-7 hover:bg-slate-500 cursor-pointer w-fit  self-center font-pop rounded-md relative bg-gray-500 text-white">
           <span className="flex items-center gap-2 ">
           sort by:  {selectedOption}
         <BsChevronDown />
