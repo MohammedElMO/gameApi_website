@@ -8,11 +8,12 @@ import { useState } from "react";
 import { Genre } from "./components/hooks/useRequestedGenres";
 import PlatFormSelector from "./components/PlatFormSelector";
 import {Platform} from "./components/hooks/useRequestedPlatforms"
-import GenresDropSort from "./components/DropSortGenres";
+import DropSort from "./components/DropSortGenres";
 
 export interface GameQuery {
   genre: Genre | null
-  platform: Platform| null
+  platform: Platform | null
+  sortBy:string 
 }
 
 const App = () => {
@@ -27,7 +28,7 @@ const [GameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
         <section className=" bg-[#999] grid-in-main max-md:col-start-nav ">
           <div className="flex">
             <PlatFormSelector onSelectPlatForm={(platform) => setGameQuery({...GameQuery,platform })} />
-            <GenresDropSort />
+            <DropSort OnSortGames={(sortBy) => setGameQuery({...GameQuery,sortBy})}  />
           </div>
           <GamesGrid gameQuery={GameQuery}/>
           </section>

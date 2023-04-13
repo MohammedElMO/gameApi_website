@@ -23,7 +23,8 @@ export interface GameResponse {
 export const useRequestedGames = (GameQuery:GameQuery) => useRequestedData<GameResponse>("/games", {
  params: {
         genres: GameQuery.genre?.id,
-        platforms:GameQuery.platform?.id
+        platforms: GameQuery.platform?.id,
+        ordering: GameQuery.sortBy,
     }    
 },
 [GameQuery]) 
