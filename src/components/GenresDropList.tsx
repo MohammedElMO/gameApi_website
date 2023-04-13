@@ -15,9 +15,9 @@ const GenresDropList = ({onFilter,selectedGenres}:Props) => {
 
         <ul className="font-pop">
             {data.map(genre =>
-                <li className="flex gap-2 my-3 text-[#ffffffd5] items-center cursor-pointer group "
+                <li className="flex gap-2 my-4  text-[#ffffffd5] items-center cursor-pointer group "
                 key={genre.id} >
-                    <img className=" origin-center object-contains max-w-sm w-10 rounded-md group-hover:scale-125"
+                    <img className=" origin-center object-contains max-w-sm w-10 rounded group-hover:scale-125"
                         src={CropImage(genre.image_background)}
                         alt="game genre icon" />
                     <a className={selectedGenres?.id === genre.id ? "hover:underline underline font-bold" :"hover:underline"} onClick={() => onFilter(genre)}>

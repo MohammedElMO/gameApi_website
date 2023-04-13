@@ -24,7 +24,7 @@ const GameBadge = ({ metacritic }: Props) => {
     return (
              <div className={"bg-slate-700 w-fit p-2 rounded-md  " + badgeColor(metacritic)}>
             
-            {metacritic}
+            {metacritic || "No"}
             </div>
     );
 };

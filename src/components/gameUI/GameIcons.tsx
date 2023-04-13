@@ -25,11 +25,11 @@ const GameIcons = ({ platforms }: Props) => {
     return (
         <div className="flex gap-3 px-2 py-3 flex-wrap">
             {platforms.map(platform => 
-                <>
+            <>
             {tabIconGame.map(({ icon, name ,id}) => {
                 return platform.slug === name ? <span key={id}>{ icon}</span> : null
             })}
-                </>
+            </>
             )}
         </div>
             

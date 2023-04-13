@@ -13,7 +13,7 @@ interface Props {
 }
 
 const PlatFormSelector = ({onSelectPlatForm}:Props) => {
-  const [isDrop, setisDrop] = useState(true)
+  const [isDrop, setisDrop] = useState(false)
   const [Platform, setPlatform] = useState("Platforms")
   const { data:platforms ,errors}  = useRequestedPlatforms()
   if(errors) return null  

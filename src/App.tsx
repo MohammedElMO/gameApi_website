@@ -32,7 +32,7 @@ const [GameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
           </div>
           <GamesGrid gameQuery={GameQuery}/>
           </section>
-        <section className="bg-[#343333] grid-in-aside p-3 max-w-[200px] w-[200px] max-md:hidden"> 
+        <section className=" bg-[#343333] grid-in-aside p-3 max-w-[200px] w-[200px] max-md:hidden"> 
           <GenresDropList selectedGenres={GameQuery.genre} onFilter={(genre) => setGameQuery({ ...GameQuery, genre })} />  
         </section>
       </div>

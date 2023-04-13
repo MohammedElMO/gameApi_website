@@ -7,7 +7,7 @@ interface Props {
 }
 
 const DropSort = ({OnSortGames}:Props) => {
-  const [isDrop, setisDrop] = useState(true)
+  const [isDrop, setisDrop] = useState(false)
   const [selectedOption, setSelectedOption] = useState<string>("Relevance")
   const sortBy = [
     {value:"",label:"Relevance"},
