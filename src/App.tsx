@@ -1,6 +1,5 @@
 import GamesGrid from "./components/gameUI/GamesGrid";
 import NavBar from "./components/NavBar";
-import useColorToggler from "./components/hooks/useColorToggler";
 import { darkMode } from "./components/thems/them";
 import "./index.css"
 import GenresDropList from "./components/GenresDropList";
@@ -20,17 +19,17 @@ export interface GameQuery {
 }
 
 const App = () => {
-  const { darkmode:dark,setDarkmode  } = useColorToggler()    
-const [GameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)  
+  const [darkmode, setDarkmode] = useState<boolean>(false) 
+
+  const [GameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)  
   return (
-    <>
       <div className={"h-screen grid grid-areas-layout grid-rows-layout  "}>
         <section className=" grid-in-nav shadow-lg shadow-gray-500 ">
-          <NavBar onSearchGame={(searchgame)=> setGameQuery({...GameQuery,searchgame  })} darkmode={dark} setDarkmode={setDarkmode}  />
+          <NavBar onSearchGame={(searchgame)=> setGameQuery({...GameQuery,searchgame  })} darkmode={darkmode} setDarkmode={setDarkmode}  />
         </section>
-        <section className=" bg-[#433D48] bg-[rgba(0,0,0,.9)]  grid-in-main max-md:col-start-nav ">
+        <section className={darkMode("bg-[rgba(0,0,0,.9)]  grid-in-main max-md:col-start-nav ",darkmode,"bg-white")}>
           <div className="flex w-full pt-4 pl-5  justify-start">
-            <GamesHeading gameQuery={GameQuery} />
+            <GamesHeading dark={darkmode} gameQuery={GameQuery} />
             </div>
             <div className="flex">
               <PlatFormSelector  onSelectPlatForm={(platform) => setGameQuery({...GameQuery,platform })} />
@@ -38,11 +37,16 @@ const [GameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
           </div>
           <GamesGrid gameQuery={GameQuery}/>
           </section>
-        <section className=" bg-[#343333] bg-[rgba(0,0,0,.9)] grid-in-aside p-3 max-w-[200px] w-[200px] max-md:hidden"> 
-          <GenresDropList selectedGenres={GameQuery.genre} onFilter={(genre) => setGameQuery({ ...GameQuery, genre })} />  
+        <section
+        className={`
+        dark: ${darkmode ?  "bg-white":"bg-[rgba(0,0,0,0.9)]"} 
+          grid-in-aside p-3 max-w-[200px] w-[200px] max-md:hidden`}> 
+          
+          
+          
+        <GenresDropList dark={darkmode} selectedGenres={GameQuery.genre} onFilter={(genre) => setGameQuery({ ...GameQuery, genre })} />  
         </section>
       </div>
-    </>
   );
 };
 
