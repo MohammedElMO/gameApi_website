@@ -5,13 +5,14 @@ import { darkMode } from "../components/thems/them"
 import { Searchgame } from "./Searchgame"
 type Props  = {
     darkmode: boolean;
-    setDarkmode:React.Dispatch<React.SetStateAction<boolean>>
+    setDarkmode: React.Dispatch<React.SetStateAction<boolean>>
+    onSearchGame:(gameTitle:string) => void
 }
-const NavBar = ({darkmode,setDarkmode}:Props) => {
+const NavBar = ({darkmode,setDarkmode,onSearchGame}:Props) => {
     return (
         <nav className="flex w-full font-pop p-2 bg-[#433D48]">
             <img src={logo} alt="logo image of game website" />
-            <Searchgame/>
+            <Searchgame onSearchGame={onSearchGame} />
             <ul className="list-none w-full flex  items-center gap-5 p-3 transition-all text-white ">
                  <li className="ml-auto font-semibold flex gap-3 items-center w-fit">
                     dark Mode

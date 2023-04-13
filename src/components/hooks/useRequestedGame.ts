@@ -25,6 +25,7 @@ export const useRequestedGames = (GameQuery:GameQuery) => useRequestedData<GameR
         genres: GameQuery.genre?.id,
         platforms: GameQuery.platform?.id,
         ordering: GameQuery.sortBy,
+        search:GameQuery.searchgame
     }    
 },
 [GameQuery]) 

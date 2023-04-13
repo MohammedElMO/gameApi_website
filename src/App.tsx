@@ -13,7 +13,8 @@ import DropSort from "./components/DropSortGenres";
 export interface GameQuery {
   genre: Genre | null
   platform: Platform | null
-  sortBy:string 
+  sortBy: string 
+  searchgame:string | ""
 }
 
 const App = () => {
@@ -23,7 +24,7 @@ const [GameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
     <>
       <div className={"h-screen grid grid-areas-layout grid-rows-layout bg-[#999]  "}>
         <section className=" grid-in-nav ">
-          <NavBar darkmode={dark} setDarkmode={setDarkmode} />
+          <NavBar onSearchGame={(searchgame)=> setGameQuery({...GameQuery,searchgame  })} darkmode={dark} setDarkmode={setDarkmode}  />
         </section>
         <section className=" bg-[#999] grid-in-main max-md:col-start-nav ">
           <div className="flex">
