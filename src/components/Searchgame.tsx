@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { AiOutlineSearch } from "react-icons/ai"
 interface Props {
-    onSearchGame:(gameTitle:string) => void
+onSearchGame:(gameTitle:string) => void
 }
 
 export const Searchgame = ({ onSearchGame }: Props) => {
@@ -12,6 +12,7 @@ export const Searchgame = ({ onSearchGame }: Props) => {
             if (game.current)
                 onSearchGame(game.current.value)
             
+            game.current!.value = ""
         }}>
         <div className='flex p-3 w-[150%] relative  '>
             <AiOutlineSearch  className="absolute left-6 bottom-[40%] z-50  text-white scale-150"/>

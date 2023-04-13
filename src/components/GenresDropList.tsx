@@ -1,6 +1,6 @@
 import {Genre, useRequestedGenres} from "./hooks/useRequestedGenres";
 import CropImage from "./services/image-url";
-import CircularProgress from '@mui/joy/CircularProgress';
+import CircularProgress from '@mui/joy/CircularProgress/CircularProgress';
 
 interface Props {
     onFilter: (genreName: Genre) => void
@@ -8,14 +8,14 @@ interface Props {
 }
 
 const GenresDropList = ({onFilter,selectedGenres}:Props) => {
-    const { data, errors ,isLoading} = useRequestedGenres()
-    if(errors) return null
-    if(isLoading) return <CircularProgress />
+    const { data,isLoading } = useRequestedGenres()
+
+        if (isLoading) return <CircularProgress />
     return (
         <>
     <h1 className="text-3xl font-bold font-pop text-white text-start">Genres</h1>
         <ul className="font-pop">
-            {data.map(genre =>
+            {data.map((genre) =>
                 <li className="flex gap-2 my-4  text-[#ffffffd5] items-center cursor-pointer group "
                 key={genre.id} >
                     <img className=" origin-center object-cover max-w-sm w-10 rounded group-hover:scale-125"

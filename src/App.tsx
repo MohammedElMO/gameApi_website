@@ -28,7 +28,7 @@ const [GameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
         <section className=" grid-in-nav shadow-lg shadow-gray-500 ">
           <NavBar onSearchGame={(searchgame)=> setGameQuery({...GameQuery,searchgame  })} darkmode={dark} setDarkmode={setDarkmode}  />
         </section>
-        <section className=" bg-[#433D48]  grid-in-main max-md:col-start-nav ">
+        <section className=" bg-[#433D48] bg-[rgba(0,0,0,.9)]  grid-in-main max-md:col-start-nav ">
           <div className="flex w-full pt-4 pl-5  justify-start">
             <GamesHeading gameQuery={GameQuery} />
             </div>
@@ -38,7 +38,7 @@ const [GameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
           </div>
           <GamesGrid gameQuery={GameQuery}/>
           </section>
-        <section className=" bg-[#343333] grid-in-aside p-3 max-w-[200px] w-[200px] max-md:hidden"> 
+        <section className=" bg-[#343333] bg-[rgba(0,0,0,.9)] grid-in-aside p-3 max-w-[200px] w-[200px] max-md:hidden"> 
           <GenresDropList selectedGenres={GameQuery.genre} onFilter={(genre) => setGameQuery({ ...GameQuery, genre })} />  
         </section>
       </div>
