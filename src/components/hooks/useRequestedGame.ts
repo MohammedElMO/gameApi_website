@@ -1,6 +1,4 @@
 import { GameQuery } from './../../App';
-import { Genre } from './useRequestedGenres';
-import { Platform} from './useRequestedPlatforms';
 import useRequestedData from "./useData"
 
 export interface PlatForm   {
@@ -14,6 +12,7 @@ export interface GameResponse {
     name: string
     released: string
     rating: number
+    rating_top: number
     playtime: Date
     updated: string
     background_image: string

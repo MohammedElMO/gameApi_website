@@ -2,8 +2,8 @@ import { GameResponse } from "../hooks/useRequestedGame";
 import GameIcons from "./GameIcons";
 import GameBadge from "./GameBadge";
 import CropImage from "../services/image-url";
+import Emoji from "./Emoji";
 import { GameSkeleton } from "./GameSkeleton";
-import { Genre } from "../hooks/useRequestedGenres";
 interface GameT {
     game: GameResponse[]
     isLoading: boolean
@@ -26,7 +26,11 @@ const GameCard = ({ game, isLoading }: GameT) => {
                             <GameBadge metacritic={gamer.metacritic} />
                             <GameIcons platforms={gamer.parent_platforms.map(plat => plat.platform)} />
                         </div>
-                        <h3 className="text-2xl max-sm:text-2xl max-md:text-3xl ">{gamer.name}</h3>
+                        <h3 className="text-2xl max-sm:text-2xl max-md:text-3xl ">
+                            {gamer.name}
+                        <Emoji rating={gamer.rating_top}/>
+                        
+                        </h3>
                         <div className="bg-slate-700 p-2 rounded">
                             {gamer.rating}
                         </div>
