@@ -1,8 +1,6 @@
-import GameCard from "./GameCard";
+import type { GameQuery } from "../../App";
 import { useRequestedGames } from "../hooks/useRequestedGame";
-import { Genre } from "../hooks/useRequestedGenres";
-import { Platform } from "../hooks/useRequestedPlatforms";
-import { GameQuery } from "../../App";
+import GameCard from "./GameCard";
 interface Props {
     gameQuery: GameQuery
 }

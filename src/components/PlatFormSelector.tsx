@@ -1,12 +1,6 @@
 import { useState } from "react";
-import List  from "@mui/joy/List";
-import  ListItem from "@mui/joy/ListItem";
-import ListItemContent from "@mui/joy/ListItemContent";
-import ListItemButton from "@mui/joy/ListItemButton";
-import ListItemDecorator from "@mui/joy/ListItemDecorator";
 import { BsChevronDown } from "react-icons/bs";
-import useRequestedPlatforms from "./hooks/useRequestedPlatforms";
-import { Platform } from "./hooks/useRequestedPlatforms";
+import useRequestedPlatforms, { Platform } from "./hooks/useRequestedPlatforms";
 
 interface Props {
   onSelectPlatForm: (p: Platform) => void

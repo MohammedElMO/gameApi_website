@@ -20,7 +20,7 @@ export interface GameResponse {
     parent_platforms: { platform : PlatForm }[]
 }
 export const useRequestedGames = (GameQuery:GameQuery) => useRequestedData<GameResponse>("/games", {
- params: {
+    params: {
         genres: GameQuery.genre?.id,
         platforms: GameQuery.platform?.id,
         ordering: GameQuery.sortBy,

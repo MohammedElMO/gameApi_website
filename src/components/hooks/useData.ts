@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import apiBase from "../services/api-client"
 import { CanceledError, AxiosError, AxiosRequestConfig } from "axios"
 
-interface DataApi<T> {
+export interface DataApi<T> {
     count:number
     results:T[]
 }
@@ -17,12 +17,12 @@ const useRequestedData = <T>(endPoint: string, axiosConfig?:AxiosRequestConfig,D
             .get<DataApi<T>>(endPoint, { signal: controller.signal,...axiosConfig})
             .then(rep => {
                 setData(rep.data.results)
-                setIsLoading(false)
+                // setIsLoading(false)
             })
             .catch((err:AxiosError) => {
                 if(err instanceof CanceledError)return
                 setErrors(err.message)
-                setIsLoading(false)
+                // setIsLoading(false)
                 
             }).finally(() => setIsLoading(false))
             return () => controller.abort()
