@@ -1,4 +1,4 @@
-import {DataApi} from "./useData"
+import {DataApi} from "../services/api-client"
 import platforms from "../data/platforms"
 import { useQuery } from "@tanstack/react-query"
 import apiBase from "../services/api-client"
@@ -12,10 +12,9 @@ export const useRequestedPlatforms = () =>
     return useQuery({
 
         queryKey:["platForms"],
-        queryFn:() => {
-             return  apiBase.get<DataApi<Platform>>("/platforms/lists/parents")
+        queryFn:() =>  apiBase.get<DataApi<Platform>>("/platforms/lists/parents")
                     .then(resp => resp.data)
-        },
+        ,
         staleTime:48*60*2*1000, // 24h
         initialData: {count:platforms.length,results:platforms}
     })

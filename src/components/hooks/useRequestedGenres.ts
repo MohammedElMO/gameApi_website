@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import { CACHE_GENRES_KEY } from "../../constants/cacheKeys"
 import apiBase from "../services/api-client"
-import { DataApi } from "./useData"
+import { DataApi } from "../services/api-client"
 import genres from "../data/genres"
 export interface Genre {
     id: number,

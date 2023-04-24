@@ -2,7 +2,6 @@ import type {Genre} from "./hooks/useRequestedGenres";
 import useRequestedGenres from "./hooks/useRequestedGenres";
 import CropImage from "./services/image-url";
 import CircularProgress from '@mui/joy/CircularProgress/CircularProgress';
-// import { darkMode } from "./thems/them";
 
 interface Props {
     onFilter: (genreName: Genre) => void
