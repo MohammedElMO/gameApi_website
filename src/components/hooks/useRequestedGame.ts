@@ -1,5 +1,6 @@
-import { GameQuery } from './../../App';
-import useRequestedData from "./useData"
+import type { GameQuery } from './../../App';
+import { useQuery } from '@tanstack/react-query';
+import baseApi, { DataApi } from '../services/api-client'
 
 export interface PlatForm   {
     id: number
@@ -19,12 +20,25 @@ export interface GameResponse {
     metacritic:number
     parent_platforms: { platform : PlatForm }[]
 }
-export const useRequestedGames = (GameQuery:GameQuery) => useRequestedData<GameResponse>("/games", {
-    params: {
-        genres: GameQuery.genre?.id,
-        platforms: GameQuery.platform?.id,
-        ordering: GameQuery.sortBy,
-        search:GameQuery.searchgame
-    }    
-},
-[GameQuery]) 
+const useRequestedGames = (GameQuery:GameQuery) => {
+
+   return  useQuery<DataApi<GameResponse>,Error>({
+        queryKey:["games",GameQuery],
+        queryFn: () => baseApi.get<DataApi<GameResponse>>("/games",{
+                params:{
+                    genres: GameQuery.genre?.id,
+                    parent_platforms: GameQuery.platform?.id,
+                    ordering: GameQuery.sortBy,
+                    search:GameQuery.searchgame
+                
+            }}).then(resp => resp.data),
+
+    })
+
+
+}
+
+
+
+export default useRequestedGames
+     
