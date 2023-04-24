@@ -6,7 +6,7 @@ import GenresDropList from "./components/GenresDropList";
 import { useState } from "react";
 import { Genre } from "./components/hooks/useRequestedGenres";
 import PlatFormSelector from "./components/PlatFormSelector";
-import {Platform} from "./components/hooks/useRequestedPlatforms"
+import {Platform} from "./components/hooks/useRequestedGame"
 import DropSort from "./components/DropSortGenres";
 import GamesHeading from "./components/gameUI/GamesHeading";
 
