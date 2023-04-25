@@ -1,18 +1,21 @@
-import apiBase from "./api-client"
+import { AxiosRequestConfig } from "axios"
+import apiBase, { DataApi } from "./api-client"
 
-const url ="https://api.rawg.io/api/games/{game_pk}"
-import apiClient from "./api-client"
-import axios from "axios"
-class HttpClient {
 
-constructor(public endPoint :string){}
-    getAll<T>() {
-       const screenShotsRequest = apiClient.get<T[]>(this.endPoint)
-        return {screenShotsRequest }
+
+ class HttpServices {
+
+
+
+    constructor(public endPoint:string){}
+
+     getAll = <T>(config?:AxiosRequestConfig) => {
+                   return apiBase
+                        .get<DataApi<T>>(this.endPoint,config)
+                        .then(rep => rep.data)
+        
     }
-  
-
 }
 
-export const  createInstance = (endPoint: string) => { return new HttpClient(endPoint) }
 
+export const create = (endPoint:string) => new HttpServices(endPoint)
