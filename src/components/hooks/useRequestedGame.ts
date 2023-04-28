@@ -25,7 +25,7 @@ const useRequestedGames = (GameQuery:GameQuery) => {
 
    return  useInfiniteQuery<DataApi<GameResponse>,Error>({
         queryKey:["games",GameQuery],
-        queryFn: ({pageParam = 1}) => create("/games").getAll({ 
+        queryFn: ({pageParam = 1}) => create("/games").getAll<GameResponse>({ 
             params:{
             genres: GameQuery.genre?.id,
             parent_platforms: GameQuery.platform?.id,
@@ -33,8 +33,11 @@ const useRequestedGames = (GameQuery:GameQuery) => {
             search:GameQuery.searchgame,
             page:pageParam
     }}),
-    getNextPageParam:(lastPage,allPages) => {return lastPage?.next ? allPages.length++ : lastPage}
-
+    getNextPageParam:(lastPage,allPages) =>
+    {
+       return lastPage.next ? allPages.length + 1 : undefined
+    },
+    // staleTime:24*2*60*1000
     
 
     })

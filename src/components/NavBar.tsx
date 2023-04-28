@@ -9,6 +9,7 @@ type Props  = {
     onSearchGame:(gameTitle:string) => void
 }
 const NavBar = ({darkmode,setDarkmode,onSearchGame}:Props) => {
+    
     return (
         <nav className={darkMode("flex w-full font-pop p-2   bg-[rgba(0,0,0,.9)] ",darkmode,"bg-[rgba(255,255,255,.9)] ")}>
             <img src={logo} alt="logo image of game website" />

@@ -1,17 +1,17 @@
-import platforms from "../data/platforms"
 import { useQuery } from "@tanstack/react-query"
-import type { Platform } from "./useRequestedGame"
-import {create } from "../services/HttpClient"
-
+import platforms from "../data/platforms"
+import { create } from "../services/HttpClient"
+import type { GameResponse, Platform } from "./useRequestedGame"
+import { DataApi } from "../services/api-client"
 export const useRequestedPlatforms = () =>
-{
-    return useQuery({
+    
+
+    useQuery<DataApi<Platform>,Error>({
         queryKey:["platForms"],
         queryFn:create("/platforms/lists/parents").getAll<Platform>,    
         staleTime:48*60*2*1000, // 24h
-        initialData: {count:platforms.length,results:platforms}
+        initialData: {count:platforms.length,next:null,results:platforms}
     })
-}
 
 
 

@@ -1,6 +1,7 @@
 import axios from "axios"
 export interface DataApi<T> {
     count:number
+    next:string | null
     results:T[]
 }
 
