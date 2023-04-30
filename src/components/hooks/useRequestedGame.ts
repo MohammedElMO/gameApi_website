@@ -24,11 +24,11 @@ export interface GameResponse {
 const useRequestedGames = (GameQuery:GameQuery) => {
 
    return  useInfiniteQuery<DataApi<GameResponse>,Error>({
-        queryKey:["games",GameQuery],
+        queryKey:["games",GameQuery.genreId],
         queryFn: ({pageParam = 1}) => create("/games").getAll<GameResponse>({ 
             params:{
-            genres: GameQuery.genre?.id,
-            parent_platforms: GameQuery.platform?.id,
+            genres: GameQuery.genreId,
+            parent_platforms: GameQuery.platformId,
             ordering: GameQuery.sortBy,
             search:GameQuery.searchgame,
             page:pageParam
@@ -37,7 +37,7 @@ const useRequestedGames = (GameQuery:GameQuery) => {
     {
        return lastPage.next ? allPages.length + 1 : undefined
     },
-    // staleTime:24*2*60*1000
+    staleTime:24*2*60*1000
     
 
     })

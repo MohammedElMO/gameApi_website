@@ -4,8 +4,8 @@ import CropImage from "./services/image-url";
 import CircularProgress from '@mui/joy/CircularProgress/CircularProgress';
 
 interface Props {
-    onFilter: (genreName: Genre) => void
-    selectedGenres: Genre | null
+    onFilter: (genreName: number) => void
+    selectedGenres?: number
     dark:boolean
 }
 
@@ -23,7 +23,12 @@ const GenresDropList = ({onFilter,selectedGenres,dark}:Props) => {
                     <img className=" origin-center object-cover max-w-sm w-10 rounded group-hover:scale-125"
                         src={CropImage(genre.image_background)}
                         alt="game genre icon" />
-                    <a className={selectedGenres?.id === genre.id ? "hover:underline underline font-bold" :"hover:underline"} onClick={() => onFilter(genre)}>
+                    <a
+                     className={selectedGenres === genre.id 
+                        ? "hover:underline underline font-bold" 
+                        :"hover:underline"} 
+
+                    onClick={() => onFilter(genre.id)}>
                     {genre.name}
                     </a>
                 </li>

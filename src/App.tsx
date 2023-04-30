@@ -1,18 +1,17 @@
-import GamesGrid from "./components/gameUI/GamesGrid";
-import NavBar from "./components/NavBar";
-import { darkMode } from "./components/thems/them";
-import "./index.css"
-import GenresDropList from "./components/GenresDropList";
-import { Context, createContext, useContext, useState } from "react";
-import { Genre } from "./components/hooks/useRequestedGenres";
-import PlatFormSelector from "./components/PlatFormSelector";
-import {Platform} from "./components/hooks/useRequestedGame"
+import { useState } from "react";
 import DropSort from "./components/DropSortGenres";
+import GenresDropList from "./components/GenresDropList";
+import NavBar from "./components/NavBar";
+import PlatFormSelector from "./components/PlatFormSelector";
+import GamesGrid from "./components/gameUI/GamesGrid";
 import GamesHeading from "./components/gameUI/GamesHeading";
+import { Platform } from "./components/hooks/useRequestedGame";
+import { darkMode } from "./components/thems/them";
+import "./index.css";
 
 export interface GameQuery {
-  genre: Genre | null
-  platform: Platform | null
+  genreId?: number
+  platformId?:number
   sortBy: string 
   searchgame: string | ""
   selectedFilter:string
@@ -21,6 +20,7 @@ export interface GameQuery {
 const App = () => {
   const [darkmode, setDarkmode] = useState<boolean>(false) 
   const [GameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery) 
+ 
   return (
       <div className={"h-screen grid grid-areas-layout grid-rows-layout  "}>
         <section className=" grid-in-nav shadow-lg shadow-gray-500 ">
@@ -31,7 +31,7 @@ const App = () => {
             <GamesHeading dark={darkmode} gameQuery={GameQuery} />
             </div>
             <div className="flex">
-              <PlatFormSelector  onSelectPlatForm={(platform) => setGameQuery({...GameQuery,platform })} />
+              <PlatFormSelector  onSelectPlatForm={(platform) => setGameQuery({...GameQuery,platformId:platform.id })} />
               <DropSort OnSortGames={(sortBy) => setGameQuery({...GameQuery,sortBy})}  />
           </div>
           <GamesGrid gameQuery={GameQuery}/>
@@ -43,7 +43,7 @@ const App = () => {
           
           
           
-        <GenresDropList dark={darkmode} selectedGenres={GameQuery.genre} onFilter={(genre) => setGameQuery({ ...GameQuery, genre })} />  
+        <GenresDropList dark={darkmode} selectedGenres={GameQuery.genreId} onFilter={(genre) => setGameQuery({ ...GameQuery , genreId:genre })} />  
         </section>
       </div>
   );

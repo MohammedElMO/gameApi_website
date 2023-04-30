@@ -1,5 +1,6 @@
 import { GameQuery } from "../../App";
-import { darkMode } from "../thems/them";
+import useRequestedGenres from "../hooks/useRequestedGenres";
+import useRequestedPlatforms from "../hooks/useRequestedPlatforms";
 
 interface Props {
     gameQuery: GameQuery
@@ -7,10 +8,17 @@ interface Props {
 }
 
 const GamesHeading = ({ gameQuery, dark }:Props) => {
+
+        const { data} = useRequestedGenres()
+        const { data:p} = useRequestedPlatforms()
+
+        const gameName = data.results.find(g => g.id === gameQuery.genreId)
+        const platformName = p.results.find(p => p.id === gameQuery.platformId)
+
     return (
         <>
         <h1 className={`text-5xl font-bold font-pop  text-start dark: ${dark ? "text-[rgba(0,0,0,0.9)]": "text-white" } `}>
-            {gameQuery.platform?.name  || " "} {gameQuery.genre?.name || " "} Games        
+            {platformName?.name  || " "} {gameName?.name || " "} Games        
         </h1>
         </>
     );

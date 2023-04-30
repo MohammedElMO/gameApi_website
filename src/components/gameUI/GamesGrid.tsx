@@ -21,7 +21,7 @@ const GamesGrid = ({ gameQuery }: Props) => {
       dataLength={FetchedData}
       hasMore={!!hasNextPage}
       next={() => fetchNextPage()}
-      loader={<h1 className="text-xl font-light">Loading Games</h1>}
+      loader={<h1 className="text-xl font-light text-white pl-3">Loading Games...</h1>}
     >
       <div className=" grid lg:grid-cols-3  xl:grid-cols-3 max-semi-md:grig-cols-1 max-sm:grid-cols-1 max-md:grid-cols-2 grid-cols-3 p-5 grid-rows-2 gap-5">
         {data?.pages.map((page, indx) => (
