@@ -5,7 +5,6 @@ import { BsChevronDown } from "react-icons/bs";
 interface Props {
   OnSortGames:(sortBy : string) => void
 }
-console.log("Foo")
 
 const DropSort = ({OnSortGames}:Props) => {
   const [isDrop, setisDrop] = useState(false)
