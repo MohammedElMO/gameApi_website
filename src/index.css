@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .gameList {
+    @apply p-2 hover:bg-[#d7d7d71c] rounded   cursor-pointer;
+  }
+  .filterListItem {
+    @apply rounded-md p-2 w-full m-2 cursor-pointer hover:bg-slate-500;
+  }
+  .darkText {
+    @apply text-[#000000d0];
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #000000d0;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
