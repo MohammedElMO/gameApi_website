@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @tailwind base;
 @tailwind components;
@@ -33,3 +34,23 @@
     background: #555;
   }
 }
+=======
+ @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+    .gameList{
+        @apply p-2 hover:bg-[#d7d7d71c] rounded   cursor-pointer
+    }
+    .filterListItem {
+        @apply rounded-md p-2 w-full m-2 cursor-pointer hover:bg-slate-500
+        
+    }
+    .darkText{
+        @apply text-[#000000d0]
+    }
+   
+        
+}
+>>>>>>> 7434ea43c2a942350c670e523559a969b5b2faa0

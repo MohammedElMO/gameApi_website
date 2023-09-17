@@ -23,8 +23,12 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-infinite-scroll-component": "6.1",
+<<<<<<< HEAD
     "react-spinners": "^0.13.8",
     "zustand": "^4.4.1"
+=======
+    "react-spinners": "^0.13.8"
+>>>>>>> 7434ea43c2a942350c670e523559a969b5b2faa0
   },
   "devDependencies": {
     "@savvywombat/tailwindcss-grid-areas": "^3.0.1",
