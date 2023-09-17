@@ -8,7 +8,6 @@ import GameIcons from "./GameIcons";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import GameSkeleton from "../layout/gameSkeleton";
-import Loader from "../layout/Loader";
 
 interface Props {
   gameQuery: GameQuery;
