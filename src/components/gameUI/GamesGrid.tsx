@@ -6,17 +6,15 @@ import Emoji from "./Emoji";
 import GameBadge from "./GameBadge";
 import GameIcons from "./GameIcons";
 import InfiniteScroll from "react-infinite-scroll-component";
-<<<<<<< HEAD
+
 import GameSkeleton from "../layout/gameSkeleton";
 import Loader from "../layout/Loader";
-=======
->>>>>>> 7434ea43c2a942350c670e523559a969b5b2faa0
+
 interface Props {
   gameQuery: GameQuery;
 }
 
 const GamesGrid = ({ gameQuery }: Props) => {
-<<<<<<< HEAD
   const {
     data,
     fetchNextPage,
@@ -32,19 +30,12 @@ const GamesGrid = ({ gameQuery }: Props) => {
     { length: FetchedData },
     (value, index) => index + 1
   );
-=======
-  const { data, isFetchingNextPage, fetchNextPage, hasNextPage } =
-    useRequestedGames(gameQuery);
-  const FetchedData =
-    data?.pages.reduce((total, page) => total + page.results.length, 0) ?? 10;
 
->>>>>>> 7434ea43c2a942350c670e523559a969b5b2faa0
   return (
     <InfiniteScroll
       dataLength={FetchedData}
       hasMore={!!hasNextPage}
       next={() => fetchNextPage()}
-<<<<<<< HEAD
       loader={
         <h1 className="text-xl font-light text-white pl-3">Loading Games...</h1>
       }
@@ -95,9 +86,13 @@ const GamesGrid = ({ gameQuery }: Props) => {
             ))}
           </>
         )}
-=======
-      loader={<h1 className="text-xl font-light text-white pl-3">Loading Games...</h1>}
-    >
+        loader=
+        {
+          <h1 className="text-xl font-light text-white pl-3">
+            Loading Games...
+          </h1>
+        }
+      </div>
       <div className=" grid lg:grid-cols-3  xl:grid-cols-3 max-semi-md:grig-cols-1 max-sm:grid-cols-1 max-md:grid-cols-2 grid-cols-3 p-5 grid-rows-2 gap-5">
         {data?.pages.map((page, indx) => (
           <React.Fragment key={indx}>
@@ -132,7 +127,6 @@ const GamesGrid = ({ gameQuery }: Props) => {
             ))}
           </React.Fragment>
         ))}
->>>>>>> 7434ea43c2a942350c670e523559a969b5b2faa0
       </div>
     </InfiniteScroll>
   );
